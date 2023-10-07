@@ -9,4 +9,21 @@
 
 # TP Laravel 10 de Grafikart
 
-Actuellement vidéo 15
+## Créer la migration en même temps que le model
+
+-m = Création d'une fichier de migration en même temps que le model.
+
+```
+php artisan make:model -m Option
+```
+
+## Librairie Javascript 'Tom Select' qui permet de modifier les <select> plus facilement
+
+[Home de Tom Select](https://tom-select.js.org/)
+
+# Actuellement vidéo 16
+
+
+
+
+

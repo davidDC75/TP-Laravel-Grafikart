@@ -12,6 +12,26 @@
 
 namespace App\Models{
 /**
+ * App\Models\Option
+ *
+ * @property int $id
+ * @property string $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Option newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Option newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Option query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Option whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Option whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Option whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Option whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	class IdeHelperOption {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Property
  *
  * @property int $id
@@ -28,6 +48,8 @@ namespace App\Models{
  * @property int $sold
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Option> $options
+ * @property-read int|null $options_count
  * @method static \Illuminate\Database\Eloquent\Builder|Property newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Property newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Property query()
