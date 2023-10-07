@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Property;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PropertySeeder extends Seeder
 {
@@ -35,7 +36,20 @@ class PropertySeeder extends Seeder
             $property->address=rand(1,30). ' rue de '.$faker->name();
             $property->postal_code='62110';
             $property->sold=rand(0,1);
+            $nbOptions=rand(1,5);
+            $tblOptions=[];
+            for ($n=0;$n<$nbOptions;$n++) {
+                $exit=false;
+                do {
+                    $option=DB::table('options')->inRandomOrder()->first();
+                    if (array_search($option->id,$tblOptions)==false) {
+                        $tblOptions[]=$option->id;
+                        $exit=true;
+                    }
+                } while (!$exit);
+            }
             $property->save();
+            $property->options()->sync($tblOptions);
         }
     }
 }
