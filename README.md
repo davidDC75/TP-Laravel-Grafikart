@@ -19,7 +19,7 @@ php artisan make:model -m Option
 
 ## Librairie Javascript 'Tom Select' qui permet de modifier les <select> plus facilement
 
-[Home de Tom Select](https://tom-select.js.org/)
+[Home de Tom Select](https://tom-select.js.org)
 
 # Actuellement vidéo 16
 
