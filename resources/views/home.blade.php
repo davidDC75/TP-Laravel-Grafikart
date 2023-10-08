@@ -1,0 +1,23 @@
+@extends('base')
+
+@section('title','Accueil')
+
+@section('content')
+    <div class="bg-light p-5 mb-5 text-center">
+        <div class="container">
+            <h1>Agence Lorem Ipsum</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Nos derniers biens</h2>
+        <div class="row">
+            @foreach($properties as $property)
+                <div class="col">
+                    @include('properties.card')
+                </div>
+            @endforeach
+        </div>
+    </div>
+@endsection
