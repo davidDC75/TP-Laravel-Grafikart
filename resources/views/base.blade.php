@@ -7,6 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>@yield('title') | Mon Agence</title>
+    <style>
+        @layer reset {
+            button {
+                all: unset;
+            }
+        }
+    </style>
 </head>
 <body>
     @php
@@ -24,6 +31,26 @@
                         <a @class(['nav-link','active' => str_contains($routeName,'property.')]) aria-current="page" href={{ route('property.index') }}>Biens</a>
                     </li>
                 </ul>
+                <div class="ms-auto">
+                    @auth
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="nav-link">Se déconnecter</button>
+                                </form>
+                            </li>
+                        </ul>
+                    @endauth
+                    @guest
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="{{ route('login') }}">Se connecter</a>
+                            </li>
+                        </ul>
+                    @endguest
+                </div>
             </div>
         </div>
     </nav>
