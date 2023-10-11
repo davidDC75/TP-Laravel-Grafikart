@@ -56,7 +56,7 @@ Route::delete('/logout',[\App\Http\Controllers\AuthController::class,'logout'])
     ->name('logout');
 
 // Ce groupe de route concerne tout ce qui touche à la partie administration du site
-Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () use ($idRegex) {
 
     // Redirection lorsqu'on arrive sur admin/
     Route::get('', function () {
@@ -69,4 +69,10 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     // CRUD des options
     Route::resource('option', \App\Http\Controllers\Admin\OptionController::class)->except(['show']);
 
+    // Suppression d'une image
+    Route::delete('picture/{picture}', [\App\Http\Controllers\Admin\PictureController::class, 'destroy'])
+        ->name('picture.destroy')
+        ->where([
+            'picture' => $idRegex,
+        ]);
 });

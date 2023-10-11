@@ -28,7 +28,7 @@ class PropertySeeder extends Seeder
             }
             $property->description=$description;
             $property->surface=rand(40,1000);
-            $property->rooms=rand(0,10);
+            $property->rooms=rand(1,10);
             $property->bedrooms=rand(0,10);
             $property->floor=rand(0,6);
             $property->price=rand(50000,600000);

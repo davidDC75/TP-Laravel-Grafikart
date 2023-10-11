@@ -32,6 +32,28 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Picture
+ *
+ * @property int $id
+ * @property string $filename
+ * @property int $property_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Picture newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Picture newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Picture query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Picture whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Picture whereFilename($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Picture whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Picture wherePropertyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Picture whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	class IdeHelperPicture {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Property
  *
  * @property int $id
@@ -50,6 +72,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Option> $options
  * @property-read int|null $options_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Picture> $pictures
+ * @property-read int|null $pictures_count
  * @method static \Illuminate\Database\Eloquent\Builder|Property newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Property newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Property query()

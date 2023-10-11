@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Http\UploadedFile;
 
 /**
  * @mixin IdeHelperProperty
@@ -33,5 +35,36 @@ class Property extends Model
 
     public function getSlug(): string {
         return \Str::slug($this->title);
+    }
+
+    public function pictures():HasMany {
+        return $this->hasMany(Picture::class);
+    }
+
+    /**
+     * @param UploadedFile[] $files
+     */
+    public function attachFiles(array $files) {
+        // Ce tableau contiendra les filename valides
+        $pictures = [];
+        foreach ($files as $file) {
+            // Si error alors on exécute pas la suite
+            if ($file->getError()) {
+                continue;
+            }
+            // Met le fichier dans le dossier properties du disk 'public'
+            $filename = $file->store('properties/'.$this->id, 'public');
+            $pictures[] = [
+                'filename' => $filename
+            ];
+        }
+        if (count($pictures) > 0) {
+            // On crée toutes les pictures en une seule fois
+            $this->pictures()->createMany($pictures);
+        }
+    }
+
+    public function getPicture(): ?Picture {
+        return $this->pictures[0] ?? null;
     }
 }
