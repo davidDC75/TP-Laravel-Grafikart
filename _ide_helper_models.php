@@ -70,17 +70,22 @@ namespace App\Models{
  * @property int $sold
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Option> $options
  * @property-read int|null $options_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Picture> $pictures
  * @property-read int|null $pictures_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Property available(bool $available = true)
  * @method static \Illuminate\Database\Eloquent\Builder|Property newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Property newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Property onlyTrashed()
  * @method static \Illuminate\Database\Eloquent\Builder|Property query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Property recent()
  * @method static \Illuminate\Database\Eloquent\Builder|Property whereAddress($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Property whereBedrooms($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Property whereCity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Property whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Property whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Property whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Property whereFloor($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Property whereId($value)
@@ -91,6 +96,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Property whereSurface($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Property whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Property whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Property withTrashed()
+ * @method static \Illuminate\Database\Eloquent\Builder|Property withoutTrashed()
  * @mixin \Eloquent
  */
 	class IdeHelperProperty {}

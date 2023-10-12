@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\UploadedFile;
 
 /**
@@ -14,6 +16,12 @@ use Illuminate\Http\UploadedFile;
 class Property extends Model
 {
     use HasFactory;
+    /*
+     * Pour gérer le soft deleting
+     * Il faut ajouter une colonne : deleted_at à la table
+     * https://laravel.com/docs/10.x/eloquent#soft-deleting
+     */
+    use SoftDeletes;
 
     protected $fillable = [
         'title',
@@ -27,6 +35,15 @@ class Property extends Model
         'address',
         'postal_code',
         'sold'
+    ];
+
+    /*
+     * Castring
+     * https://laravel.com/docs/10.x/eloquent-mutators
+     */
+    protected $casts = [
+        'created_at' => 'string',
+        'sold' => 'boolean'
     ];
 
     public function options(): BelongsToMany {
@@ -66,5 +83,23 @@ class Property extends Model
 
     public function getPicture(): ?Picture {
         return $this->pictures[0] ?? null;
+    }
+
+    public function isSoftDeleted(): ?bool {
+        return !($this->deleted_at === null);
+    }
+
+    /*
+     * Ce scope permet de récupérer les bien disponible ou pas
+     * utilisé dans le controller avec available()
+     * $properties=Property::with('pictures')->available(true)->recent()->limit(4)->get();
+     */
+    public function scopeAvailable(Builder $builder, bool $available = true): Builder {
+        return $builder->where('sold', !$available);
+    }
+
+    // Ce scope permet de récupérer les bien les plus récents
+    public function scopeRecent(Builder $builder): Builder {
+        return $builder->orderBy('created_at','desc');
     }
 }

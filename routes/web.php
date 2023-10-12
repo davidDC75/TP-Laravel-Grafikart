@@ -67,6 +67,14 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () us
     // CRUD des properties
     Route::resource('property', \App\Http\Controllers\Admin\PropertyController::class)->except(['show']);
 
+    /*
+     * Restaure une property
+     * withTrashed() permet de récupérer les properties
+     * soft deleted. Sinon cela ne fonctionne pas
+     */
+    Route::post('property/restore/{property}', [\App\Http\Controllers\Admin\PropertyController::class, 'restore'])
+        ->name('property.restore')->withTrashed();
+
     // CRUD des options
     Route::resource('option', \App\Http\Controllers\Admin\OptionController::class)->except(['show']);
 

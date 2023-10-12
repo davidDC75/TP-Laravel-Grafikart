@@ -29,11 +29,18 @@
                     <td>
                         <div class="d-flex gap-2 w-100 justify-content-end">
                             <a href="{{ route('admin.property.edit', $property) }}" class="btn btn-primary">Editer</a>
-                            <form action="{{ route('admin.property.destroy', $property) }}" method="post">
-                                @csrf
-                                @method('delete')
-                                <button class="btn btn-danger">Supprimer</button>
-                            </form>
+                            @if($property->isSoftDeleted()===true)
+                                <form action="{{ route('admin.property.restore', $property) }}" method="post">
+                                    @csrf
+                                    <button class="btn btn-success">Restaurer</button>
+                                </form>
+                            @else
+                                <form action="{{ route('admin.property.destroy', $property) }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-danger">Supprimer</button>
+                                </form>
+                            @endif
                         </div>
                     </td>
                 </tr>

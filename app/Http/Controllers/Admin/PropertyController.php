@@ -14,8 +14,12 @@ class PropertyController extends Controller
 
     public function index()
     {
+        $properties = Property::orderBy('created_at','desc')->withTrashed()->paginate(15);
         return view('admin.properties.index', [
-            'properties' => Property::orderBy('created_at','desc')->paginate(15)
+            /*
+             * withTrashed() permet de récupérer les biens qui ont été soft deleted
+             */
+            'properties' => $properties
         ]);
     }
 
@@ -45,6 +49,8 @@ class PropertyController extends Controller
      */
     public function store(PropertyFormRequest $request) {
         $property= Property::create($request->validated());
+        if ($request->validated('pictures')!==null)
+            $property->attachFiles($request->validated('pictures'));
         $property->options()->sync($request->validated('options'));
         $property->options()->sync($request->validated('options'));
         return to_route('admin.property.index')->with('success', 'Le bien a bien été créé');
@@ -67,7 +73,8 @@ class PropertyController extends Controller
     public function update(PropertyFormRequest $request, Property $property)
     {
         $property->update($request->validated());
-        $property->attachFiles($request->validated('pictures'));
+        if ($request->validated('pictures')!==null)
+            $property->attachFiles($request->validated('pictures'));
         $property->options()->sync($request->validated('options'));
         return to_route('admin.property.index')->with('success', 'Le bien a bien été modifié');
     }
@@ -79,6 +86,17 @@ class PropertyController extends Controller
     {
         Picture::destroy( $property->pictures()->pluck('id') );
         $property->delete();
+        /*
+         * Pour forcer la suppression en BDD
+         * $property->forceDelete();
+         */
         return to_route('admin.property.index')->with('success', 'Le bien a bien été supprimé');
+    }
+
+    public function restore(Property $property) {
+        if ($property->isSoftDeleted()) {
+            $property->restore();
+        }
+        return to_route('admin.property.index')->with('success', 'Le bien a bien été restauré');
     }
 }

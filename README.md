@@ -39,8 +39,36 @@ Librairie php de manipulation d'image
 
 [Spatie](https://spatie.be/open-source)
 
-# Actuellement vidéo 20
+## Local et global scopes
 
+[Doc Laravel](https://laravel.com/docs/10.x/eloquent#query-scopes)
+
+## Soft Deleting (Eloquent)
+
+[Doc Laravel](https://laravel.com/docs/10.x/eloquent#soft-deleting)
+
+## Eloquent: Mutators & Casting
+
+[Doc Laravel](https://laravel.com/docs/10.x/eloquent-mutators)
+
+## Pour faire un custom cast
+
+[Doc Laravel](https://laravel.com/docs/10.x/eloquent-mutators#custom-casts)
+
+Pour avoir le get et le set :
+
+```
+php artisan make:cast Hash
+```
+
+Pour avoir seulement le set (cas password) :
+
+```
+php artisan make:cast Hash --inbound
+```
+
+
+# Actuellement vidéo 21
 
 
 
