@@ -25,13 +25,13 @@ php artisan make:model -m Option
 
 Librairie JS qui permet de faire des requêtes AJAX et modifier dynamiquement le site en utilisant uniquement que des attributs html.
 
+[htmx](https://htmx.org/docs/)
+
 ## Glide
 
 Librairie php de manipulation d'image
 
 [Glide PHP](https://glide.thephpleague.com/)
-
-[htmlx](https://htmx.org/docs/)
 
 ## Spatie -  laravel-medialibrary
 
