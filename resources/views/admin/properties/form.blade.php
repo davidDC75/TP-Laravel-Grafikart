@@ -32,6 +32,15 @@
                 </div>
                 @include('shared.select',['label' => 'Options', 'value' => $property->options()->pluck('id'),'name' => 'options', 'options' => $options,'multiple' => true])
                 @include('shared.checkbox',['label' => 'Vendu', 'name' => 'sold', 'value' => $property->sold, 'options' => $options])
+                <div>
+                    <button class="btn btn-primary mt-2">
+                        @if($property->exists)
+                            Modifier
+                        @else
+                            Créer
+                        @endif
+                    </button>
+                </div>
             </div>
 
             <div class="col vstack gap-3" style="flex: 25">
@@ -51,15 +60,6 @@
                 @endforeach
                 @include('shared.upload',['label' => 'Images', 'name' => 'pictures', 'multiple' => true])
             </div>
-        </div>
-        <div>
-            <button class="btn btn-primary mt-2">
-                @if($property->exists)
-                    Modifier
-                @else
-                    Créer
-                @endif
-            </button>
         </div>
     </form>
 @endsection

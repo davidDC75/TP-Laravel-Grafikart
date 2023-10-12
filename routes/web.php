@@ -33,6 +33,7 @@ Route::get('/biens/{slug}-{property}', [PropertyController::class, 'show'])
         'slug' => $slugRegex
 ]);
 
+Route::get('/images/{path}', [\App\Http\Controllers\ImageController::class,'show'])->where('path','.*');
 // Formulaire de contact
 Route::post('/biens/{property}/contact',[PropertyController::class,'contact'])
     ->name('property.contact')

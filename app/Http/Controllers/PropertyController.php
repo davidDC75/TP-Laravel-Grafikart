@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Mail;
 class PropertyController extends Controller
 {
     public function index(SearchPropertiesRequest $request) {
-        $query=Property::query()->with('options')->orderBy('created_at','desc');
+        // Le with permet de préloader les pictures et les options en minimisant le nombre de requête SQL
+        $query=Property::query()->with('pictures')->with('options')->orderBy('created_at','desc');
 
         if ($price = $request->validated('price')) {
             $query=$query->where('price','<=', $price);

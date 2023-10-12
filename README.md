@@ -21,7 +21,23 @@ php artisan make:model -m Option
 
 [Home de Tom Select](https://tom-select.js.org)
 
-# Actuellement vidéo 19 27:52
+## htmx
+
+Librairie JS qui permet de faire des requêtes AJAX et modifier dynamiquement le site en utilisant uniquement que des attributs html.
+
+## Glide
+
+Librairie php de manipulation d'image
+
+[Glide PHP](https://glide.thephpleague.com/)
+
+[htmlx](https://htmx.org/docs/)
+
+## Spatie -  laravel-medialibrary
+
+[Spatie](https://spatie.be/open-source)
+
+# Actuellement vidéo 20
 
 
 

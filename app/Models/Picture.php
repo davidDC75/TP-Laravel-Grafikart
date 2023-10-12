@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use League\Glide\Urls\UrlBuilderFactory;
 
 /**
  * @mixin IdeHelperPicture
@@ -25,7 +26,19 @@ class Picture extends Model
         });
     }
 
-    public function getImageUrl(): string {
-        return \Storage::disk('public')->url($this->filename);
+    public function getImageUrl(?int $width = null, ?int $height = null): string {
+        // Pas de traitement de l'image
+        if ($width===null) {
+            return \Storage::disk('public')->url($this->filename);
+        }
+
+        /*
+         * Sinon, on utilise glide pour redimentionner l'image
+         * On utilise l'url builder en lui passant la base url de la route
+         * avec la clé de sécurité
+         */
+        $urlBuilder = UrlBuilderFactory::create('/images', config('glide.key'));
+        // Retourne l'url de l'image
+        return $urlBuilder->getUrl($this->filename, ['w' => $width, 'h' => $height, 'fit' => 'crop']);
     }
 }
