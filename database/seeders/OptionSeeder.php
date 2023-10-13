@@ -13,29 +13,6 @@ class OptionSeeder extends Seeder
      */
     public function run(): void
     {
-        $tblOptions= [
-            'Ascenceur',
-            'Jacuzzi',
-            'Accès PMR',
-            'Chauffage au gaz',
-            'Piscine',
-            'Commerce de proximité',
-            'Transport en commun',
-            'Marché à proximité',
-            'Jardin',
-            'Terrasse',
-            'Balcon',
-            'Meublé',
-            'Internet Fibre',
-            'Garage à voiture',
-            'Garage à vélo',
-            'Sans travaux'
-        ];
-
-        foreach ($tblOptions as $optionLabel) {
-            $option = new Option();
-            $option->name=$optionLabel;
-            $option->save();
-        }
+        Option::factory(20)->create();
     }
 }

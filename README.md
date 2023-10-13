@@ -67,8 +67,17 @@ Pour avoir seulement le set (cas password) :
 php artisan make:cast Hash --inbound
 ```
 
+## Using Model Factories
 
-# Actuellement vidéo 21
+[Doc Laravel](https://laravel.com/docs/10.x/seeding#using-model-factories)
+
+ Supprime les tables, refait les migrations et termine par le seeding
+
+```
+php artisan migrate:fresh --seed
+```
+
+# Actuellement vidéo 22
 
 
 

@@ -13,13 +13,9 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // commande pour lancer : php artisan db:seed UserSeeder
-        // Création utilisateur de test
-        $user=User::create([
-            'name' => 's3g',
-            'email' => 'test@test.fr',
-            'password' => \Hash::make('test')
+        User::factory(10)->create();
+        User::factory(1)->create([
+            'email' => 'segphault@gmail.com'
         ]);
-        $user->save();
     }
 }
