@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite(['resources/css/app.css', 'resources/js/admin.js'])
+    @vite(['resources/js/admin.js'])
     <title>@yield('title') | Administration</title>
     <style>
         @layer reset {
@@ -47,17 +47,14 @@
                     </li>
                 </ul>
                 <div class="ms-auto">
-                    @auth
                         <ul class="navbar-nav">
                             <li class="nav-item">
-                                <form action="{{ route('logout') }}" method="post">
+                                <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    @method('delete')
                                     <button class="nav-link">Se déconnecter</button>
                                 </form>
                             </li>
                         </ul>
-                    @endauth
                 </div>
             </div>
         </div>

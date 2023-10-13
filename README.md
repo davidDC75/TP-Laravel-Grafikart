@@ -107,9 +107,38 @@ Accés dans blade :
 <x-recent></x-recent>
 ```
 
+## Laravel Breeze
+
+(Doc Laravel)[https://laravel.com/docs/10.x/starter-kits]
+
+```
+composer require laravel/breeze --dev
+```
+
+### /!\ Modification package vendor
+
+Quand on génère l'installation de breeze, il y a une erreur de compilation. Cela concerne le fichier postcss.config.js .
+Le fichier est regénéré automatiquement et se trouve dans le dossier vendor/laravel/breeze/stubs/postcss.config.js
+
+il faut remplacer son contenu par :
+
+```
+module.exports = {
+    plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
+    },
+};
+```
+
+Idéalement, il faut l'installer au tout début du projet avant de coder quoi que ce soit. Comme ça, on est tranquille.
 
 
-# Actuellement vidéo 24
+```
+php artisan breeze:install blade
+```
+
+# Actuellement vidéo 25
 
 
 

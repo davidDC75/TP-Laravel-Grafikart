@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PropertyController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,29 @@ use Illuminate\Support\Facades\Route;
 
 $idRegex = '[0-9]+';
 $slugRegex = '[a-z0-9\-]+';
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
 
 // Home
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])
@@ -43,6 +67,7 @@ Route::post('/biens/{property}/contact',[PropertyController::class,'contact'])
 
 
 // Formulaire d'authentification
+/*
 Route::get('/login',[\App\Http\Controllers\AuthController::class,'login'])
     ->middleware('guest')
     ->name('login');
@@ -55,9 +80,10 @@ Route::post('/login',[\App\Http\Controllers\AuthController::class,'doLogin'])
 Route::delete('/logout',[\App\Http\Controllers\AuthController::class,'logout'])
     ->middleware('auth')
     ->name('logout');
+*/
 
 // Ce groupe de route concerne tout ce qui touche à la partie administration du site
-Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () use ($idRegex) {
+Route::prefix('admin')->name('admin.')->middleware(['auth','verified'])->group(function () use ($idRegex) {
 
     // Redirection lorsqu'on arrive sur admin/
     Route::get('', function () {

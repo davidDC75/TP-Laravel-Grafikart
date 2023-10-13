@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,9 +12,10 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Casts\Hash as HashCast;
 
 /**
+ * Pour activer la vérification des emails on implément l'interface MustVerifyEmail
  * @mixin IdeHelperUser
  */
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -46,7 +47,12 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => HashCast::class
+        /*
+         * Le HashCast ne fonctionne pas avec breeze
+         * on utilise 'hashed' à la place
+         */
+        //'password' => HashCast::class
+        'password' => 'hashed'
     ];
 
     /*

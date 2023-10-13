@@ -40,7 +40,6 @@
                             <li class="nav-item">
                                 <form action="{{ route('logout') }}" method="post">
                                     @csrf
-                                    @method('delete')
                                     <button class="nav-link">Se déconnecter</button>
                                 </form>
                             </li>
