@@ -53,7 +53,7 @@ class User extends Authenticatable implements MustVerifyEmail
          * on utilise 'hashed' à la place
          */
         //'password' => HashCast::class
-        'password' => 'hashed'
+        'password' => 'hashed',
     ];
 
     /*

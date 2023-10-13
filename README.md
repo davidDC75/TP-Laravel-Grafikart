@@ -138,7 +138,17 @@ Idéalement, il faut l'installer au tout début du projet avant de coder quoi qu
 php artisan breeze:install blade
 ```
 
-# Actuellement vidéo 25
+## Authorization
+
+[Doc Laravel](https://laravel.com/docs/10.x/authorization)
+
+Créer une policy
+
+```
+php artisan make:policy PropertyPolicy --model=Property
+```
+
+# Actuellement vidéo 26
 
 
 

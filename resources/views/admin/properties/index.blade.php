@@ -35,11 +35,13 @@
                                     <button class="btn btn-success">Restaurer</button>
                                 </form>
                             @else
+                                @can("delete", $property)
                                 <form action="{{ route('admin.property.destroy', $property) }}" method="post">
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-danger">Supprimer</button>
                                 </form>
+                                @endcan
                             @endif
                         </div>
                     </td>

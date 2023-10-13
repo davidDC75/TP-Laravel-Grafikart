@@ -12,8 +12,14 @@ use Illuminate\Http\Request;
 class PropertyController extends Controller
 {
 
+    public function __construct() {
+        // Permet de vérifier les authorisation selon les ressources
+        $this->authorizeResource(Property::class,'property');
+    }
+
     public function index()
     {
+        //dd(\Auth::user()->can('viewAny', Property::class));
         $properties = Property::orderBy('created_at','desc')->withTrashed()->paginate(15);
         return view('admin.properties.index', [
             /*
@@ -61,6 +67,11 @@ class PropertyController extends Controller
      */
     public function edit(Property $property)
     {
+
+        // Est-ce que l'utilisateur à le droit 'delete'
+        //$this->authorize('delete',$property);
+
+        // dd(\Auth::user()->can('delete', $property));
         return view('admin.properties.form', [
             'property' => $property,
             'options' => Option::pluck('name','id')
