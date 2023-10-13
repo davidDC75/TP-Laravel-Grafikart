@@ -13,6 +13,7 @@ use App\Casts\Hash as HashCast;
 
 /**
  * Pour activer la vérification des emails on implément l'interface MustVerifyEmail
+ *
  * @mixin IdeHelperUser
  */
 class User extends Authenticatable implements MustVerifyEmail

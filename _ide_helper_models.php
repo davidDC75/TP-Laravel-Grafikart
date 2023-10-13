@@ -107,13 +107,13 @@ namespace App\Models{
 
 namespace App\Models{
 /**
- * App\Models\User
+ * Pour activer la vérification des emails on implément l'interface MustVerifyEmail
  *
  * @property int $id
  * @property string $name
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
- * @property string $password
+ * @property mixed $password
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
