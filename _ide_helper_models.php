@@ -18,6 +18,7 @@ namespace App\Models{
  * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\OptionFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Option newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Option newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Option query()
@@ -67,8 +68,8 @@ namespace App\Models{
  * @property string $city
  * @property string $address
  * @property string $postal_code
- * @property int $sold
- * @property \Illuminate\Support\Carbon|null $created_at
+ * @property bool $sold
+ * @property string|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Option> $options
@@ -76,6 +77,7 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Picture> $pictures
  * @property-read int|null $pictures_count
  * @method static \Illuminate\Database\Eloquent\Builder|Property available(bool $available = true)
+ * @method static \Database\Factories\PropertyFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Property newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Property newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Property onlyTrashed()
