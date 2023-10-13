@@ -13,25 +13,28 @@
             <div class="col" style="flex: 100">
 
                 <div class="row">
-                    @include('shared.input',['class' => 'col','label' => 'Titre', 'name' => 'title', 'value' => $property->title])
+                    <x-input class="col" name="title" label="Titre" :value="$property->title"></x-input>
                     <div class="col row">
-                        @include('shared.input',['class' => 'col','label' => 'Surface', 'name' => 'surface', 'value' => $property->surface])
-                        @include('shared.input',['class' => 'col','label' => 'Prix', 'name' => 'price', 'value' => $property->price])
+                        <x-input class="col" name="surface" label="Surface" :value="$property->surface"></x-input>
+                        <x-input class="col" name="price" label="Prix" :value="$property->price"></x-input>
                     </div>
                 </div>
-                @include('shared.input',['type' => 'textarea', 'label' => 'Description', 'name' => 'description', 'value' => $property->description])
+                <x-input type="textarea" name="description" label="Description" :value="$property->description"></x-input>
                 <div class="row">
-                    @include('shared.input',['class' => 'col','label' => 'Pièce', 'name' => 'rooms', 'value' => $property->rooms])
-                    @include('shared.input',['class' => 'col','label' => 'Chambres', 'name' => 'bedrooms', 'value' => $property->bedrooms])
-                    @include('shared.input',['class' => 'col','label' => 'Étage', 'name' => 'floor', 'value' => $property->floor])
+                    <x-input class="col" name="rooms" label="Pièce" :value="$property->rooms"></x-input>
+                    <x-input class="col" name="bedrooms" label="Chambres" :value="$property->bedrooms"></x-input>
+                    <x-input class="col" name="floor" label="Étage" :value="$property->floor"></x-input>
                 </div>
                 <div class="row">
-                    @include('shared.input',['class' => 'col','label' => 'Adresse', 'name' => 'address', 'value' => $property->address])
-                    @include('shared.input',['class' => 'col','label' => 'Code postal', 'name' => 'postal_code', 'value' => $property->postal_code])
-                    @include('shared.input',['class' => 'col','label' => 'Ville', 'name' => 'city', 'value' => $property->city])
+                    <x-input class="col" name="address" label="Adresse" :value="$property->address"></x-input>
+                    <x-input class="col" name="postal_code" label="Code postal" :value="$property->postal_code"></x-input>
+                    <x-input class="col" name="city" label="Ville" :value="$property->city"></x-input>
                 </div>
-                @include('shared.select',['label' => 'Options', 'value' => $property->options()->pluck('id'),'name' => 'options', 'options' => $options,'multiple' => true])
-                @include('shared.checkbox',['label' => 'Vendu', 'name' => 'sold', 'value' => $property->sold, 'options' => $options])
+                @php
+                    $tblOptions = $property->options()->pluck('id');
+                @endphp
+                <x-select label="Options" :value="$tblOptions" name='options' :options="$options" multiple="true"></x-select>
+                <x-checkbox label="Vendu" name="sold" :value="$property->sold" :options="$options"></x-checkbox>
                 <div>
                     <button class="btn btn-primary mt-2">
                         @if($property->exists)
@@ -58,7 +61,7 @@
                         </button>
                     </div>
                 @endforeach
-                @include('shared.upload',['label' => 'Images', 'name' => 'pictures', 'multiple' => true])
+                <x-upload label="Images" name="pictures" multiple="true"></x-upload>
             </div>
         </div>
     </form>

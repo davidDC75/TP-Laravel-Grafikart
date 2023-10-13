@@ -45,19 +45,19 @@
                 <div class="mt-4">
                     <h4>Intéressé par ce bien ?</h4>
 
-                    @include('shared.flash')
+                    <x-flash></x-flash>
 
                     <form action="{{ route('property.contact', $property) }}" method="post" class="vstack gap-3">
                         @csrf
                         <div class="row">
-                            @include('shared.input', ['class' => 'col', 'name' => 'firstname', 'label' => 'Prénom'])
-                            @include('shared.input', ['class' => 'col', 'name' => 'lastname', 'label' => 'Nom'])
+                            <x-input class="col" name="firstname" label="Prénom"></x-input>
+                            <x-input class="col" name="lastname" label="Nom"></x-input>
                         </div>
                         <div class="row">
-                            @include('shared.input', ['class' => 'col', 'name' => 'phone', 'label' => 'Téléphone'])
-                            @include('shared.input', ['type' => 'email', 'class' => 'col', 'name' => 'email', 'label' => 'Email'])
+                            <x-input class="col" name="phone" label="Téléphone"></x-input>
+                            <x-input type="email" class="col" name="email" label="Email"></x-input>
                         </div>
-                        @include('shared.input', ['type' => 'textarea', 'class' => 'col', 'name' => 'message', 'label' => 'Votre message'])
+                        <x-input type="textarea" class="col" name="message" label="Votre message"></x-input>
                         <div>
                             <button class="btn btn-primary">Nous contacter</button>
                         </div>

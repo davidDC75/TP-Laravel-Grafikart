@@ -79,9 +79,37 @@ php artisan migrate:fresh --seed
 
 ## Vite
 
+Lancer le serveur de développement :
+
+```
+npm run dev
+```
+
 [Doc Laravel](https://laravel.com/docs/10.x/vite)
 
-# Actuellement vidéo 23
+## Les composants (view et Component)
+
+Générer deux fichiers : app/View/Components/Name.php et resources/views/components/name.blade.php
+
+```
+php artisan make:component Recent
+```
+
+Générer que la vue blade :
+
+```
+php artisan make:component Input --view
+```
+
+Accés dans blade :
+
+```
+<x-recent></x-recent>
+```
+
+
+
+# Actuellement vidéo 24
 
 
 

@@ -9,7 +9,7 @@
         @csrf
         @method($option->exists ? 'put':'post')
 
-        @include('shared.input',['label' => 'Nom', 'name' => 'name', 'value' => $option->name])
+        <x-input name="name" label="Nom" :value="$option->name"></x-input>
         <div>
             <button class="btn btn-primary mt-2">
                 @if($option->exists)

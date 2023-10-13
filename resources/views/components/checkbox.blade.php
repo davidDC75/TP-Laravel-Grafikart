@@ -1,5 +1,5 @@
 @php
-$class ??= null;
+    $class ??= null;
 @endphp
 <div @class(['form-check form-switch', $class])>
     <input type="hidden" value="0" name="{{ $name }}">

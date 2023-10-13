@@ -63,7 +63,7 @@
         </div>
     </nav>
     <div class="container mt-5">
-        @include('shared.flash')
+        <x-flash></x-flash>
         @yield('content')
     </div>
 </body>

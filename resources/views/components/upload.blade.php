@@ -1,6 +1,6 @@
 @php
-$class ??= null;
-$multiple ??= false;
+    $class ??= null;
+    $multiple ??= false;
 @endphp
 <div @class([ 'form-group', $class])>
     <label for="{{ $name }}">{{ $label }}</label>
