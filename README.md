@@ -77,7 +77,11 @@ php artisan make:cast Hash --inbound
 php artisan migrate:fresh --seed
 ```
 
-# Actuellement vidéo 22
+## Vite
+
+[Doc Laravel](https://laravel.com/docs/10.x/vite)
+
+# Actuellement vidéo 23
 
 
 
