@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Pagination\PaginationServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
+use App\Weather;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(Weather::class, fn () => new Weather('demo'));
     }
 
     /**

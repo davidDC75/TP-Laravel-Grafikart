@@ -7,7 +7,9 @@ use App\Http\Requests\Admin\PropertyFormRequest;
 use App\Models\Option;
 use App\Models\Picture;
 use App\Models\Property;
+use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PropertyController extends Controller
 {
@@ -17,8 +19,13 @@ class PropertyController extends Controller
         $this->authorizeResource(Property::class,'property');
     }
 
-    public function index()
+    public function index(AuthManager $authManager)
     {
+        //$auth=app('auth');
+        //dd($auth->user());
+        //dd($authManager->user());
+        //dd(Auth::user());
+        //dd(auth()->user());
         //dd(\Auth::user()->can('viewAny', Property::class));
         $properties = Property::orderBy('created_at','desc')->withTrashed()->paginate(15);
         return view('admin.properties.index', [

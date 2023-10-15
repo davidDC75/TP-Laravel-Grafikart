@@ -148,7 +148,15 @@ Créer une policy
 php artisan make:policy PropertyPolicy --model=Property
 ```
 
-# Actuellement vidéo 26
+## Laravel Service Provider
+
+[Doc Laravel](https://laravel.com/docs/10.x/providers)
+
+## Laravel Facades
+
+[Doc Laravel](https://laravel.com/docs/10.x/facades)
+
+# Actuellement vidéo 27
 
 
 
