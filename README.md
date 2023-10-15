@@ -156,7 +156,37 @@ php artisan make:policy PropertyPolicy --model=Property
 
 [Doc Laravel](https://laravel.com/docs/10.x/facades)
 
-# Actuellement vidéo 27
+## Events
+
+[Doc Laravel](https://laravel.com/docs/10.x/events)
+
+Créer un événement
+
+```
+php artisan make:event ContactRequestEvent
+```
+
+Créer un listener
+
+```
+php artisan make:listener ContactListener --event=ContactRequestEvent
+```
+
+Déclencher l'événement :
+
+```
+event(new ContactRequestEvent($property, $request->validated()));
+```
+
+Ajouter dans app/Providers/EventServiceProvider.php à la propriété $listen
+
+```
+        ContactRequestEvent::class => [
+            ContactListener::class
+        ]
+```
+
+# Actuellement vidéo 28 
 
 
 
