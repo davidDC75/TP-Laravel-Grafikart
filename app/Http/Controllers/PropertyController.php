@@ -6,6 +6,8 @@ use App\Events\ContactRequestEvent;
 use App\Http\Requests\PropertyContactRequest;
 use App\Http\Requests\SearchPropertiesRequest;
 use App\Mail\PropertyContactMail;
+use App\Models\User;
+use App\Notifications\ContactRequestNotification;
 use Illuminate\Http\Request;
 use App\Models\Property;
 use Illuminate\Support\Facades\Mail;
@@ -38,6 +40,15 @@ class PropertyController extends Controller
     }
 
     public function show(string $slug, Property $property) {
+        // Pour récupérer la notification
+        /** @var User $user */
+        $user = User::find(20);
+        // Marque comme lu
+        //dd($user->unreadNotifications[0]->markAsRead());
+        // On peut aussi le faire d'un coup pour toutes les notifications non lues
+        //dd($user->unreadNotifications->markAsRead());
+        //dd($user->unreadNotifications);
+        //dd($user->notifications);
         $expectedSlug=$property->getSlug();
         if ($slug !== $expectedSlug) {
             return to_route('property.show', ['slug' => $expectedSlug,'property' => $property]);
@@ -49,8 +60,15 @@ class PropertyController extends Controller
     }
 
     public function contact(Property $property,PropertyContactRequest $request) {
-        ContactRequestEvent::dispatch($property,$request->validated());
+
+        // Pour déclencher l'événement
+        //ContactRequestEvent::dispatch($property,$request->validated());
         //event(new ContactRequestEvent($property, $request->validated()));
+
+        // On utilise dans ce cas, les notifications
+        /** @var User $user */
+        $user = User::find(20);
+        $user->notify(new ContactRequestNotification($property, $request->validated()));
         return back()->with('success','Votre demande de contact a bien été envoyé.');
     }
 }

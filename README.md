@@ -186,7 +186,23 @@ Ajouter dans app/Providers/EventServiceProvider.php à la propriété $listen
         ]
 ```
 
-# Actuellement vidéo 28 
+## Notifications
+
+[Doc Laravel](https://laravel.com/docs/10.x/notifications)
+
+Créer une notification
+
+```
+php artisan make:notification ContactRequestNotification
+```
+
+Créer la migration nécessaire pour utiliser le canal database
+
+```
+php artisan notifications:table
+```
+
+# Actuellement vidéo 29
 
 
 
