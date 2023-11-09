@@ -214,8 +214,12 @@ Plugin permettant de traduire Laravel :
 
 [Doc Laravel](https://laravel.com/docs/10.x/queues)
 
+## Eloquent: API Resources
 
-# Actuellement vidéo 31
+[Doc Laravel](https://laravel.com/docs/10.x/eloquent-resources)
+
+
+# Actuellement vidéo 32
 
 
 
