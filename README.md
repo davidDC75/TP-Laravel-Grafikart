@@ -202,7 +202,15 @@ Créer la migration nécessaire pour utiliser le canal database
 php artisan notifications:table
 ```
 
-# Actuellement vidéo 29
+## Localization
+
+[Doc Laravel](https://laravel.com/docs/10.x/localization)
+
+Plugin permettant de traduire Laravel :
+
+[Laravel lang](https://laravel-lang.com)
+
+# Actuellement vidéo 30
 
 
 
