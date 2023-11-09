@@ -210,7 +210,12 @@ Plugin permettant de traduire Laravel :
 
 [Laravel lang](https://laravel-lang.com)
 
-# Actuellement vidéo 30
+## Queue
+
+[Doc Laravel](https://laravel.com/docs/10.x/queues)
+
+
+# Actuellement vidéo 31
 
 
 

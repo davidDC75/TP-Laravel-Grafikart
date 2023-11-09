@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\ContactRequestEvent;
 use App\Http\Requests\PropertyContactRequest;
 use App\Http\Requests\SearchPropertiesRequest;
+use App\Jobs\DemoJob;
 use App\Mail\PropertyContactMail;
 use App\Models\User;
 use App\Notifications\ContactRequestNotification;
@@ -40,6 +41,7 @@ class PropertyController extends Controller
     }
 
     public function show(string $slug, Property $property) {
+        DemoJob::dispatch($property)->delay(now()->addSeconds(10));
         // Pour récupérer la notification
         /** @var User $user */
         $user = User::find(20);
